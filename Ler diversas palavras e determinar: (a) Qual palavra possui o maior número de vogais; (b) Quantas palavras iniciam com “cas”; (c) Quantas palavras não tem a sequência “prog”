@@ -1,0 +1,56 @@
+import java.util.Scanner;
+public class exIntegrador3Semana10
+{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String palavra;
+        String palavraMaisVogais = "";
+        int maxVogais = 0;
+        int comecaComCas = 0;
+        int naoTemProg = 0;
+
+        System.out.println("Digite palavras (digite 'fim' para encerrar):");
+
+        while (true) {
+            palavra = scanner.nextLine().toLowerCase();
+
+            if (palavra.equals("fim")) {
+                break;
+            }
+
+            // (a) Conta vogais
+            int contVogais = contarVogais(palavra);
+            if (contVogais > maxVogais) {
+                maxVogais = contVogais;
+                palavraMaisVogais = palavra;
+            }
+
+            // (b) Inicia com "cas"
+            if (palavra.startsWith("cas")) {
+                comecaComCas++;
+            }
+
+            // (c) Não contém "prog"
+            if (!palavra.contains("prog")) {
+                naoTemProg++;
+            }
+        }
+
+        System.out.println("\nResultado:");
+        System.out.println("(a) Palavra com mais vogais: " + palavraMaisVogais + " (" + maxVogais + " vogais)");
+        System.out.println("(b) Palavras que começam com 'cas': " + comecaComCas);
+        System.out.println("(c) Palavras que NÃO contêm 'prog': " + naoTemProg);
+
+        scanner.close();
+    }
+
+    private static int contarVogais(String palavra) {
+        int contador = 0;
+        for (char c : palavra.toCharArray()) {
+            if ("aeiou".indexOf(c) != -1) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+}
