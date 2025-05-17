@@ -1,0 +1,29 @@
+import java.util.*;
+public class exIntegradorSemana10
+{
+ public static void main()
+ {
+ String java = "java";
+
+ int tam= java.length();
+ char letra;
+ for(int n = 0; n < tam; n++)
+ {
+ for(int i = 0; i <= n; i++)
+ {
+ letra = java.charAt(i);
+System.out.print(letra);
+ }
+ System.out.println();
+ }
+ for(int n = tam-2; n >= 0; n--)
+ {
+ for(int i = 0; i <= n; i++)
+ {
+ letra= java.charAt(i);
+System.out.print(letra);
+ }
+ System.out.println();
+ }
+ }
+}
