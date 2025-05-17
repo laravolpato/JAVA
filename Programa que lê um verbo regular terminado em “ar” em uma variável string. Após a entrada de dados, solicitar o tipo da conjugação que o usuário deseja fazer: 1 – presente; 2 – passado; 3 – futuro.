@@ -1,0 +1,64 @@
+import java.util.Scanner;
+public class exIntegrador2Semana10
+{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String repetir = "s";  //Inicialização para evitar erro
+
+        do {
+            System.out.print("Digite um verbo regular terminado em 'ar': ");
+            String verbo = scanner.nextLine().toLowerCase().trim();
+
+            if (!verbo.endsWith("ar") || verbo.length() <= 2) {
+                System.out.println("Entrada inválida. Certifique-se de digitar um verbo terminado em 'ar'.\n");
+                continue;
+            }
+
+            String radical = verbo.substring(0, verbo.length() - 2);
+
+            System.out.println("Escolha o tempo verbal:");
+            System.out.println("1 – Presente");
+            System.out.println("2 – Passado (Pretérito Perfeito)");
+            System.out.println("3 – Futuro");
+            System.out.print("Digite o número correspondente ao tempo verbal desejado: ");
+
+            int tempo;
+            try {
+                tempo = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida! Use apenas números de 1 a 3.\n");
+                continue;
+            }
+
+            String[] pronomes = {"eu", "tu", "ele/ela", "nós", "vós", "eles/elas"};
+            String[] terminacoes;
+
+            switch (tempo) {
+                case 1:
+                    terminacoes = new String[]{"o", "as", "a", "amos", "ais", "am"};
+                    break;
+                case 2:
+                    terminacoes = new String[]{"ei", "aste", "ou", "amos", "astes", "aram"};
+                    break;
+                case 3:
+                    terminacoes = new String[]{"arei", "arás", "ará", "aremos", "areis", "arão"};
+                    break;
+                default:
+                    System.out.println("Tempo inválido!\n");
+                    continue;
+            }
+
+            System.out.println("\nConjugação do verbo '" + verbo + "':");
+            for (int i = 0; i < pronomes.length; i++) {
+                System.out.println(pronomes[i] + " " + radical + terminacoes[i]);
+            }
+
+            System.out.print("\nDeseja conjugar outro verbo? (s/n): ");
+            repetir = scanner.nextLine().toLowerCase();
+
+        } while (repetir.equals("s"));
+
+        System.out.println("Programa encerrado.");
+        scanner.close();
+    }
+}
