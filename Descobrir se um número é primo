@@ -1,0 +1,27 @@
+public class primos
+{
+    // Esse método serve para verificar se um número é primo ou não
+    // Ele recebe um número inteiro 'nro' e retorna true (é primo) ou false (não é)
+    public static boolean EhPrimo(int nro)
+    {
+        // Essa variável vai guardar se achamos algum número que divide 'nro'
+        boolean dividiu = false;
+
+        // Testamos todos os números de 2 até (nro - 1)
+        // Se algum deles dividir 'nro' exatamente, então ele NÃO é primo
+        for (int i = 2; i < nro; i++)
+        {
+            // Verifica se 'nro' é divisível por 'i' (ou seja, se o resto da divisão é zero)
+            if (nro % i == 0)
+            {
+                // Achou um divisor => não é primo
+                dividiu = true;
+
+                // Para o loop, não precisa testar mais nada
+                break;
+            }
+        }
+
+        // Se 'dividiu' for true, então NÃO é primo => retorna false
+        // Se 'dividiu' for false, então É primo => retorna true
+        return (!dividiu);
